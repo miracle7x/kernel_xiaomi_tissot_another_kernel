@@ -1,4 +1,4 @@
-name: Build-Non-Treble-KSU
+name: Build-Non-Treble-KSU-V2
 
 on:
   workflow_dispatch:
