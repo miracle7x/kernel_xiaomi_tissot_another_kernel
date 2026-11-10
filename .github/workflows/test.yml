@@ -80,7 +80,7 @@ jobs:
             exit 1
           fi
 
-      - name: Setup KernelSU
+      - name: ⚡ Setup NoMount
         run: |
           curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/dev/kernel/setup.sh | bash -s master
 
