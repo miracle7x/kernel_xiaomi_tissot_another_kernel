@@ -46,7 +46,7 @@ jobs:
           path: clang
           key: ${{ runner.os }}-proton-clang-master
 
-      - name: ⚡ Cache Ccache
+      - name: ⚡ Cache
         uses: actions/cache@v4
         with:
           path: /home/runner/.ccache
@@ -80,7 +80,7 @@ jobs:
             exit 1
           fi
 
-      - name: 🥷  Remove hardcoded build user/host
+      - name: 🥷 Remove hardcoded build user/host
         working-directory: ${{ env.KERNEL_NAME }}
         run: |
           echo "== Sebelum =="
@@ -106,7 +106,7 @@ jobs:
           curl -LSs "https://raw.githubusercontent.com/manipvlator/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
           curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/dev/kernel/setup.sh | bash -s master
 
-      - name:  🛠️ Build 
+      - name: 🛠️ Build 
         run: |
           export PATH="$PWD/clang/bin:$PATH"
 
