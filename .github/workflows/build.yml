@@ -17,8 +17,8 @@ env:
   CCACHE_COMPRESSLEVEL: 1
   CCACHE_SLOPPINESS: time_macros,include_file_mtime,include_file_ctime
   CCACHE_NOHASHDIR: 1
-  KBUILD_BUILD_USER: miracle7x
-  KBUILD_BUILD_HOST: actions
+  KBUILD_BUILD_USER: cappuccino
+  KBUILD_BUILD_HOST: build
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
@@ -125,18 +125,16 @@ jobs:
           git clone --depth=1 https://github.com/osm0sis/AnyKernel3.git anykernel
           rm -rf anykernel/.git anykernel/README.md anykernel/modules anykernel/patch anykernel/ramdisk
 
-          sed -i 's/^kernel.string=.*/kernel.string=Another Kernel tissot by miracle7x/' anykernel/anykernel.sh
+          sed -i 's/^kernel.string=.*/kernel.string=perf kernel tissot by cappuccino/' anykernel/anykernel.sh
 
           sed -i 's/^do.devicecheck=.*/do.devicecheck=1/' anykernel/anykernel.sh
           sed -i 's/^device.name1=.*/device.name1=tissot/' anykernel/anykernel.sh
-          sed -i 's/^device.name2=.*/device.name2=tissot_sprout/' anykernel/anykernel.sh
           sed -i 's/^is_slot_device=.*/is_slot_device=1/' anykernel/anykernel.sh
           sed -i 's|^BLOCK=.*|BLOCK=/dev/block/bootdevice/by-name/boot;|' anykernel/anykernel.sh
-
           cp out/arch/arm64/boot/Image.gz-dtb anykernel/Image.gz-dtb
 
           cd anykernel
-          zip -r9 ../AnotherKernel-tissot-$(date +'%Y%m%d').zip * -x .git README.md *placeholder
+          zip -r9 ../perf-nontreble-ksu-tissot-$(date +'%Y%m%d').zip * -x .git README.md *placeholder
 
       - name: ⬇️ Upload
         uses: actions/upload-artifact@v4
@@ -144,7 +142,7 @@ jobs:
           name: perf-nontreble-ksu-tissot
           path: perf-nontreble-ksu-tissot-*.zip
 
-      - name: ❤ Telegram Upload
+      - name: ⬇️ Telegram Upload
         run: |
           ZIP=$(ls perf-nontreble-ksu-tissot-*.zip | head -n1)
           SIZE=$(du -h "$ZIP" | cut -f1)
