@@ -72,8 +72,8 @@ jobs:
         run: |
           if [ -f arch/arm64/configs/tissot_defconfig ]; then
             echo "DEFCONFIG=tissot_defconfig" >> $GITHUB_ENV
-          elif [ -f arch/arm64/configs/vendor/tissot_defconfig ]; then
-            echo "DEFCONFIG=vendor/tissot_defconfig" >> $GITHUB_ENV
+          elif [ -f arch/arm64/configs/tissot_defconfig ]; then
+            echo "DEFCONFIG=tissot_defconfig" >> $GITHUB_ENV
           else
             echo "Defconfig tissot tidak ditemukan. Isi arch/arm64/configs:"
             ls arch/arm64/configs
@@ -82,7 +82,6 @@ jobs:
 
       - name: Setup KernelSU
         run: |
-          curl -LSs "https://raw.githubusercontent.com/manipvlator/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
           curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/dev/kernel/setup.sh | bash -s master
 
       - name: Build
