@@ -134,7 +134,7 @@ jobs:
           cp out/arch/arm64/boot/Image.gz-dtb anykernel/Image.gz-dtb
 
           cd anykernel
-          zip -r9 ../perf-nontreble-ksu-tissot-$(date +'%Y%m%d').zip * -x .git README.md *placeholder
+          zip -r9 ../perf-treble-ksu-tissot-$(date +'%Y%m%d').zip * -x .git README.md *placeholder
 
       - name: ⬇️ Upload
         uses: actions/upload-artifact@v4
