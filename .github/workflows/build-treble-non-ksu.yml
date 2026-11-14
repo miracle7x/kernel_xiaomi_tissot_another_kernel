@@ -1,4 +1,4 @@
-name: Build-Non-Treble-V2
+name: Build-Treble-V2
 
 on:
   workflow_dispatch:
