@@ -139,12 +139,12 @@ jobs:
       - name: ⬇️ Upload
         uses: actions/upload-artifact@v4
         with:
-          name: perf-nontreble-ksu-tissot
-          path: perf-nontreble-ksu-tissot-*.zip
+          name: perf-treble-ksu-tissot
+          path: perf-treble-ksu-tissot-*.zip
 
       - name: ⬇️ Telegram Upload
         run: |
-          ZIP=$(ls perf-nontreble-ksu-tissot-*.zip | head -n1)
+          ZIP=$(ls perf-treble-ksu-tissot-*.zip | head -n1)
           SIZE=$(du -h "$ZIP" | cut -f1)
           curl -s -F document=@"$ZIP" \
             -F chat_id="${TELEGRAM_CHAT_ID}" \
